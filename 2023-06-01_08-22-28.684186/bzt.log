@@ -1,0 +1,245 @@
+[2023-06-01 08:22:28,475 INFO root] Taurus CLI Tool v1.16.23
+[2023-06-01 08:22:28,475 DEBUG root] Build: 14504 Wed May 24 10:40:08 UTC 2023
+[2023-06-01 08:22:28,475 DEBUG root] Extended git info:  5902bf48 Changelog 1.16.23
+[2023-06-01 08:22:28,476 DEBUG root] Command-line options: {'log': '/tmp/bzt_i60mfhxx.log', 'option': None, 'quiet': None, 'verbose': None, 'no_system_configs': None, 'aliases': []}
+[2023-06-01 08:22:28,476 DEBUG root] Python: CPython 3.8.10
+[2023-06-01 08:22:28,476 DEBUG root] OS: uname_result(system='Linux', node='vagrant', release='5.4.0-80-generic', version='#90-Ubuntu SMP Fri Jul 9 22:49:44 UTC 2021', machine='x86_64', processor='x86_64')
+[2023-06-01 08:22:28,476 DEBUG root] Path to interpreter: /usr/bin/python3.8
+[2023-06-01 08:22:28,476 DEBUG root] Path to packages: ['/home/vagrant/.local/bin', '/usr/lib/python38.zip', '/usr/lib/python3.8', '/usr/lib/python3.8/lib-dynload', '/home/vagrant/.local/lib/python3.8/site-packages', '/usr/local/lib/python3.8/dist-packages', '/usr/lib/python3/dist-packages']
+[2023-06-01 08:22:28,476 DEBUG root] Default python: None
+[2023-06-01 08:22:28,476 DEBUG root] Default python3: /usr/bin/python3
+[2023-06-01 08:22:28,476 DEBUG root] Using personal config: /home/vagrant/.bzt-rc
+[2023-06-01 08:22:28,476 INFO root] Starting with configs: ['/home/vagrant/.bzt-rc', 'performance.yml']
+[2023-06-01 08:22:28,476 INFO Engine] Configuring...
+[2023-06-01 08:22:28,553 DEBUG Engine] Base configs list: ['/home/vagrant/.local/lib/python3.8/site-packages/bzt/resources/10-base-config.yml']
+[2023-06-01 08:22:28,553 DEBUG Engine.Configuration] Configs: ['/home/vagrant/.local/lib/python3.8/site-packages/bzt/resources/10-base-config.yml']
+[2023-06-01 08:22:28,554 DEBUG Engine.Configuration] Reading /home/vagrant/.local/lib/python3.8/site-packages/bzt/resources/10-base-config.yml as YAML
+[2023-06-01 08:22:28,585 DEBUG Engine] User configs list: ['/home/vagrant/.bzt-rc', 'performance.yml']
+[2023-06-01 08:22:28,585 DEBUG Engine.Configuration] Configs: ['/home/vagrant/.bzt-rc', 'performance.yml']
+[2023-06-01 08:22:28,586 DEBUG Engine.Configuration] Reading /home/vagrant/.bzt-rc as YAML
+[2023-06-01 08:22:28,591 DEBUG Engine.Configuration] Reading performance.yml as YAML
+[2023-06-01 08:22:28,595 DEBUG Engine.Configuration] Configs: ['/home/vagrant/.bzt-rc', 'performance.yml']
+[2023-06-01 08:22:28,595 DEBUG Engine.Configuration] Reading /home/vagrant/.bzt-rc as YAML
+[2023-06-01 08:22:28,601 DEBUG Engine.Configuration] Reading performance.yml as YAML
+[2023-06-01 08:22:28,604 INFO HTTPClient] Proxy settings not set
+[2023-06-01 08:22:28,683 DEBUG Engine] Requesting updates info: https://gettaurus.org/updates/?version=1.16.23&installID=linux-a19727171e33
+[2023-06-01 08:22:28,684 DEBUG HTTPClient] Making HTTP request GET https://gettaurus.org/updates/?version=1.16.23&installID=linux-a19727171e33
+[2023-06-01 08:22:28,684 INFO Engine] Artifacts dir: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186
+[2023-06-01 08:22:28,685 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective
+[2023-06-01 08:22:28,686 DEBUG Engine.Configuration] Dumping YAML config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.yml
+[2023-06-01 08:22:28,694 DEBUG urllib3.connectionpool] Starting new HTTPS connection (1): gettaurus.org:443
+[2023-06-01 08:22:28,712 DEBUG Engine.Configuration] Dumping JSON config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.json
+[2023-06-01 08:22:28,713 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/merged.yml
+[2023-06-01 08:22:28,713 DEBUG Engine.Configuration] Dumping YAML config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/merged.yml
+[2023-06-01 08:22:28,716 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/merged.json
+[2023-06-01 08:22:28,716 DEBUG Engine.Configuration] Dumping JSON config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/merged.json
+[2023-06-01 08:22:28,716 DEBUG Engine] Add existing artifact (move=False): /home/vagrant/.bzt-rc
+[2023-06-01 08:22:28,716 DEBUG Engine] Copying /home/vagrant/.bzt-rc to /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/.bzt-rc
+[2023-06-01 08:22:28,716 DEBUG Engine] Add existing artifact (move=False): performance.yml
+[2023-06-01 08:22:28,716 DEBUG Engine] Copying performance.yml to /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/performance.yml
+[2023-06-01 08:22:28,717 DEBUG Engine] Set PYTHONPATH to :
+	CURRENT: '' +
+	TEMP: '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/python-packages/3.8.10' +
+	USER: '/home/vagrant/.bzt/python-packages/3.8.10'
+[2023-06-01 08:22:28,717 DEBUG Engine] Content of user packages dir: []
+[2023-06-01 08:22:28,717 DEBUG Engine] OS env: OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+[2023-06-01 08:22:28,717 DEBUG Engine] OS env: TAURUS_ARTIFACTS_DIR=/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186
+[2023-06-01 08:22:28,717 DEBUG root] Closing log handler: /tmp/bzt_i60mfhxx.log
+[2023-06-01 08:22:28,718 DEBUG root] Switched writing logs to /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/bzt.log
+[2023-06-01 08:22:28,718 DEBUG root] Linting config
+[2023-06-01 08:22:28,720 INFO Engine] Preparing...
+[2023-06-01 08:22:28,721 DEBUG Engine] Module config: consolidator {'class': 'bzt.modules.aggregator.ConsolidatingAggregator'}
+[2023-06-01 08:22:28,721 DEBUG root] Importing module: bzt.modules.aggregator
+[2023-06-01 08:22:29,019 DEBUG root] Loading class: 'ConsolidatingAggregator' from <module 'bzt.modules.aggregator' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/modules/aggregator.py'>
+[2023-06-01 08:22:29,019 DEBUG Engine.consolidator] Buffer scaling setup: percentile 95.0 from [0.0, 50.0, 90.0, 95.0, 99.0, 99.9, 100.0] selected
+[2023-06-01 08:22:29,020 DEBUG Engine] Module config: monitoring {'class': 'bzt.modules.monitoring.Monitoring'}
+[2023-06-01 08:22:29,020 DEBUG root] Importing module: bzt.modules.monitoring
+[2023-06-01 08:22:29,022 DEBUG root] Loading class: 'Monitoring' from <module 'bzt.modules.monitoring' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/modules/monitoring.py'>
+[2023-06-01 08:22:29,022 DEBUG Engine] Module config: local {'class': 'bzt.modules.provisioning.Local'}
+[2023-06-01 08:22:29,022 DEBUG root] Importing module: bzt.modules.provisioning
+[2023-06-01 08:22:29,023 DEBUG root] Loading class: 'Local' from <module 'bzt.modules.provisioning' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/modules/provisioning.py'>
+[2023-06-01 08:22:29,023 DEBUG Engine] Module config: jmeter {'class': 'bzt.modules.jmeter.JMeterExecutor', 'protocol-handlers': {'http': 'bzt.jmx.http.HTTPProtocolHandler', 'mqtt': 'bzt.jmx.mqtt.MQTTProtocolHandler', 'grpc': 'bzt.jmx.grpc.GRPCProtocolHandler'}, 'plugins': ['jpgc-casutg', 'jpgc-dummy', 'jpgc-ffw', 'jpgc-fifo', 'jpgc-functions', 'jpgc-json', 'jpgc-perfmon', 'jpgc-prmctl', 'jpgc-tst'], 'properties': {'jmeter.save.saveservice.autoflush': 'true', 'jmeter.save.saveservice.connect_time': 'true', 'jmeterengine.force.system.exit': 'true', 'summariser.name': ''}}
+[2023-06-01 08:22:29,023 DEBUG root] Importing module: bzt.modules.jmeter
+[2023-06-01 08:22:29,042 DEBUG root] Loading class: 'JMeterExecutor' from <module 'bzt.modules.jmeter' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/modules/jmeter.py'>
+[2023-06-01 08:22:29,042 DEBUG Engine.local] Preparing executor: jmeter/139970308391024
+[2023-06-01 08:22:29,042 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/jmeter.log
+[2023-06-01 08:22:29,043 DEBUG Engine.jmeter] Checking if port 4445 is free
+[2023-06-01 08:22:29,043 DEBUG Engine.jmeter] Port 4445 is free
+[2023-06-01 08:22:29,043 DEBUG Engine.jmeter] Using port 4445 for management
+[2023-06-01 08:22:29,043 DEBUG Engine.jmeter] Getting Jmeter version.
+[2023-06-01 08:22:29,043 DEBUG Engine.jmeter] Autodetect version is enabled
+[2023-06-01 08:22:29,043 DEBUG Engine.jmeter] JMeter version: 5.4.3
+[2023-06-01 08:22:29,043 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/requests.jmx
+[2023-06-01 08:22:29,046 DEBUG root] Importing module: bzt.jmx.http
+[2023-06-01 08:22:29,047 DEBUG root] Loading class: 'HTTPProtocolHandler' from <module 'bzt.jmx.http' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/jmx/http.py'>
+[2023-06-01 08:22:29,047 DEBUG root] Importing module: bzt.jmx.mqtt
+[2023-06-01 08:22:29,048 DEBUG root] Loading class: 'MQTTProtocolHandler' from <module 'bzt.jmx.mqtt' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/jmx/mqtt.py'>
+[2023-06-01 08:22:29,048 DEBUG root] Importing module: bzt.jmx.grpc
+[2023-06-01 08:22:29,048 DEBUG root] Loading class: 'GRPCProtocolHandler' from <module 'bzt.jmx.grpc' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/jmx/grpc.py'>
+[2023-06-01 08:22:29,050 DEBUG JMeterScenarioBuilder] Saving JMX to: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/requests.jmx
+[2023-06-01 08:22:29,051 DEBUG Engine.jmeter] Additional system properties {'sun.net.inetaddr.ttl': 0}
+[2023-06-01 08:22:29,051 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/system.properties
+[2023-06-01 08:22:29,051 DEBUG Engine.jmeter] Additional properties: {'jmeter.save.saveservice.autoflush': 'true', 'jmeter.save.saveservice.connect_time': 'true', 'jmeterengine.force.system.exit': 'true', 'summariser.name': '', 'jmeterengine.nongui.port': 4445, 'jmeterengine.nongui.maxport': 4445, 'jmeter.save.saveservice.timestamp_format': 'ms', 'sampleresult.default.encoding': 'UTF-8', 'user.classpath': '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186:/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186'}
+[2023-06-01 08:22:29,051 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/jmeter-bzt.properties
+[2023-06-01 08:22:29,052 DEBUG Engine.jmeter.JavaVM] Trying JavaVM: ['java', '-version']
+[2023-06-01 08:22:29,052 DEBUG root] Executing shell: ['java', '-version'] at .
+[2023-06-01 08:22:29,107 DEBUG Engine.jmeter.JavaVM] JavaVM output: openjdk version "11.0.11" 2021-04-20
+OpenJDK Runtime Environment (build 11.0.11+9-Ubuntu-0ubuntu2.20.04)
+OpenJDK 64-Bit Server VM (build 11.0.11+9-Ubuntu-0ubuntu2.20.04, mixed mode, sharing)
+
+[2023-06-01 08:22:29,107 DEBUG Engine.jmeter.TclLibrary] We don't need to check tcl library on this platform
+[2023-06-01 08:22:29,108 DEBUG Engine.jmeter.JMeter] Trying JMeter..
+[2023-06-01 08:22:29,110 DEBUG root] Executing shell: ['/home/vagrant/.bzt/jmeter-taurus/5.4.3/bin/jmeter.sh', '-j', '/tmp/jmeter43vxs7z7log', '--version'] at .
+[2023-06-01 08:22:31,021 DEBUG Engine.jmeter.JMeter] JMeter check:     _    ____   _    ____ _   _ _____       _ __  __ _____ _____ _____ ____
+   / \  |  _ \ / \  / ___| | | | ____|     | |  \/  | ____|_   _| ____|  _ \
+  / _ \ | |_) / _ \| |   | |_| |  _|    _  | | |\/| |  _|   | | |  _| | |_) |
+ / ___ \|  __/ ___ \ |___|  _  | |___  | |_| | |  | | |___  | | | |___|  _ <
+/_/   \_\_| /_/   \_\____|_| |_|_____|  \___/|_|  |_|_____| |_| |_____|_| \_\ 5.4.3
+
+Copyright (c) 1999-2021 The Apache Software Foundation
+
+ / 
+[2023-06-01 08:22:31,023 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/kpi.jtl
+[2023-06-01 08:22:31,024 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/error.jtl
+[2023-06-01 08:22:31,025 DEBUG Engine.jmeter.LoadSettingsProcessor] Load: LoadSpec(concurrency=60, throughput=None, ramp_up=10.0, hold=60.0, iterations=0, duration=70.0, steps=None)
+[2023-06-01 08:22:31,026 DEBUG Engine.jmeter.LoadSettingsProcessor.ThreadGroupHandler] Converting ThreadGroup (simple-web-server) to ConcurrencyThreadGroup and apply load parameters
+[2023-06-01 08:22:31,026 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx
+[2023-06-01 08:22:31,027 DEBUG JMX] Saving JMX to: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx
+[2023-06-01 08:22:31,028 DEBUG root] Executing shell: ['/home/vagrant/.bzt/jmeter-taurus/5.4.3/bin/PluginsManagerCMD.sh', 'install-for-jmx', '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx'] at .
+[2023-06-01 08:22:34,523 DEBUG urllib3.connectionpool] https://gettaurus.org:443 "GET /updates/?version=1.16.23&installID=linux-a19727171e33 HTTP/1.1" 500 1096
+[2023-06-01 08:22:34,525 DEBUG Engine] Failed to check for updates, server returned 5xx NoneType: None
+
+[2023-06-01 08:22:34,525 WARNING Engine] Failed to check for updates, server returned 5xx.
+[2023-06-01 08:22:35,766 DEBUG Engine.jmeter.JMeter] Try to detect plugins for /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx
+2023-06-01 08:22:32,237 INFO o.j.r.PluginManagerCMD: Command is: install-for-jmx
+2023-06-01 08:22:32,320 INFO o.j.r.JARSourceHTTP: Requesting https://jmeter-plugins.org/repo/?installID=amazon-f3a95e077ab8af9ebcd09a601816dd9a-nongui
+2023-06-01 08:22:35,053 INFO o.j.r.PluginManager: Plugins Status: [jpgc-functions=2.2, jpgc-casutg=2.10, jpgc-dummy=0.4, jpgc-ffw=2.0, jpgc-fifo=0.2, jpgc-json=2.7, jpgc-prmctl=0.4, jpgc-perfmon=2.1, jpgc-plugins-manager=1.7, jpgc-tst=2.5, jmeter-core=5.4.3, jmeter-ftp=5.4.3, jmeter-http=5.4.3, jmeter-jdbc=5.4.3, jmeter-jms=5.4.3, jmeter-junit=5.4.3, jmeter-java=5.4.3, jmeter-ldap=5.4.3, jmeter-mail=5.4.3, jmeter-mongodb=5.4.3, jmeter-native=5.4.3, jmeter-tcp=5.4.3, jmeter-components=5.4.3]
+2023-06-01 08:22:35,056 INFO o.j.r.PluginManagerCMD: Params line is: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx
+2023-06-01 08:22:35,454 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2023-06-01 08:22:35,494 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2023-06-01 08:22:35,503 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2023-06-01 08:22:35,559 INFO o.a.j.p.h.c.CacheManager: Will only cache the following methods: [GET]
+2023-06-01 08:22:35,568 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2023-06-01 08:22:35,593 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-01 08:22:35,593 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-01 08:22:35,593 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-01 08:22:35,593 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-01 08:22:35,593 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2023-06-01 08:22:35,593 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2023-06-01 08:22:35,692 INFO o.j.r.PluginManager: Finishing without changes
+
+
+[2023-06-01 08:22:35,767 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/jmeter.out
+[2023-06-01 08:22:35,768 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/jmeter.err
+[2023-06-01 08:22:35,770 DEBUG Engine] Module config: final-stats {'class': 'bzt.modules.reporting.FinalStatus'}
+[2023-06-01 08:22:35,770 DEBUG root] Importing module: bzt.modules.reporting
+[2023-06-01 08:22:36,110 DEBUG pyvirtualdisplay] version=3.0
+[2023-06-01 08:22:36,127 DEBUG root] Loading class: 'FinalStatus' from <module 'bzt.modules.reporting' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/modules/reporting.py'>
+[2023-06-01 08:22:36,127 DEBUG Engine] Module config: console {'class': 'bzt.modules.console.ConsoleStatusReporter'}
+[2023-06-01 08:22:36,127 DEBUG root] Importing module: bzt.modules.console
+[2023-06-01 08:22:36,127 DEBUG root] Loading class: 'ConsoleStatusReporter' from <module 'bzt.modules.console' from '/home/vagrant/.local/lib/python3.8/site-packages/bzt/modules/console.py'>
+[2023-06-01 08:22:36,128 WARNING Engine] Module 'console' can be only used once, will merge all new instances into single
+[2023-06-01 08:22:36,142 DEBUG Engine.Configuration] Dumping YAML config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.yml
+[2023-06-01 08:22:36,170 DEBUG Engine.Configuration] Dumping JSON config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.json
+[2023-06-01 08:22:36,171 INFO Engine] Starting...
+[2023-06-01 08:22:36,171 DEBUG Engine] Startup <bzt.modules.monitoring.Monitoring object at 0x7f4d753224f0>
+[2023-06-01 08:22:36,171 DEBUG Engine] Startup <bzt.modules.aggregator.ConsolidatingAggregator object at 0x7f4d75322fd0>
+[2023-06-01 08:22:36,171 DEBUG Engine] Startup <bzt.modules.reporting.FinalStatus object at 0x7f4d74a79c40>
+[2023-06-01 08:22:36,171 DEBUG Engine] Startup <bzt.modules.console.ConsoleStatusReporter object at 0x7f4d74a79ca0>
+[2023-06-01 08:22:36,171 INFO Engine.console] Waiting for results...
+[2023-06-01 08:22:36,172 DEBUG Engine] Startup <bzt.modules.reporting.FinalStatus object at 0x7f4d606dde20>
+[2023-06-01 08:22:36,172 DEBUG Engine] Startup <bzt.modules.provisioning.Local object at 0x7f4d75322790>
+[2023-06-01 08:22:36,172 DEBUG Engine.local] Delay setup for jmeter/simple-web-server: 0(start-at) + 0(delay) = 0
+[2023-06-01 08:22:36,173 DEBUG Engine.Configuration] Dumping YAML config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.yml
+[2023-06-01 08:22:36,200 DEBUG Engine.Configuration] Dumping JSON config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.json
+[2023-06-01 08:22:36,201 DEBUG root] Leveling down log file verbosity to INFO, use -v option to have DEBUG messages enabled
+[2023-06-01 08:22:36,201 DEBUG root] Leveled up log file verbosity
+[2023-06-01 08:22:36,201 DEBUG Engine] New artifact filename: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/GRACEFUL
+[2023-06-01 08:22:36,202 DEBUG root] Executing shell: ['/home/vagrant/.bzt/jmeter-taurus/5.4.3/bin/jmeter.sh', '-t', '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx', '-j', '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/jmeter.log', '-q', '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/jmeter-bzt.properties', '-n', '-S', '/home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/system.properties'] at /home/vagrant/daniel/simple-web-server
+[2023-06-01 08:22:36,206 DEBUG Engine.local] Starting execution: jmeter/simple-web-server, rest of available slots: 9223372036854775806
+[2023-06-01 08:22:36,206 DEBUG root] Leveling down log file verbosity to INFO, use -v option to have DEBUG messages enabled
+[2023-06-01 08:22:36,414 INFO Engine.console] Waiting for finish...
+[2023-06-01 08:24:01,328 WARNING Engine] Please wait for graceful shutdown...
+[2023-06-01 08:24:01,340 DEBUG root] Leveled up log file verbosity
+[2023-06-01 08:24:01,340 INFO Engine] Shutting down...
+[2023-06-01 08:24:01,352 DEBUG Engine] Current stop reason: None
+[2023-06-01 08:24:01,353 DEBUG Engine.local] Shutdown jmeter/simple-web-server
+[2023-06-01 08:24:01,353 DEBUG Engine.console] Restoring logging streams, [<StreamHandler (INFO)>]/{<StreamHandler (INFO)>: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>}
+[2023-06-01 08:24:01,355 DEBUG Engine.Configuration] Dumping YAML config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.yml
+[2023-06-01 08:24:01,381 DEBUG Engine.Configuration] Dumping JSON config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.json
+[2023-06-01 08:24:01,382 INFO Engine] Post-processing...
+[2023-06-01 08:24:01,382 DEBUG Engine.local] Post-process jmeter/simple-web-server
+[2023-06-01 08:24:01,382 DEBUG Engine] Add existing artifact (move=True): /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx
+[2023-06-01 08:24:01,382 DEBUG Engine] No need to copy /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/modified_requests.jmx
+[2023-06-01 08:24:01,383 DEBUG Engine.jmeter.JTLReader] Buffer len: 2; Known errors count: 1
+[2023-06-01 08:24:01,383 DEBUG Engine.jmeter.JTLReader] Aggregating: 1685607828, 2 in buffer
+[2023-06-01 08:24:01,403 DEBUG Engine.jmeter.JTLErrorsReader] Got error info for 1685607828, labels: dict_keys(['http://127.0.0.1:8080/performance.yml', ''])
+[2023-06-01 08:24:01,406 DEBUG Engine.jmeter.JTLReader] Aggregating: 1685607829, 1 in buffer
+[2023-06-01 08:24:01,422 DEBUG Engine.jmeter.JTLReader] Buffer len: 0; Known errors count: 1
+[2023-06-01 08:24:01,423 DEBUG Engine.consolidator] Consolidator buffer[4]: dict_keys([1685607826, 1685607827, 1685607828, 1685607829])
+[2023-06-01 08:24:01,423 DEBUG Engine.consolidator] Merging into 1685607826
+[2023-06-01 08:24:01,423 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-01 08:24:01,495 DEBUG Engine.consolidator] Processed datapoint: 1685607826/ConsolidatingAggregator@139970655432656
+[2023-06-01 08:24:01,496 DEBUG Engine.consolidator] Merging into 1685607827
+[2023-06-01 08:24:01,496 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-01 08:24:01,576 DEBUG Engine.consolidator] Processed datapoint: 1685607827/ConsolidatingAggregator@139970655432656
+[2023-06-01 08:24:01,576 DEBUG Engine.consolidator] Merging into 1685607828
+[2023-06-01 08:24:01,576 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-01 08:24:01,696 DEBUG Engine.consolidator] Processed datapoint: 1685607828/ConsolidatingAggregator@139970655432656
+[2023-06-01 08:24:01,697 DEBUG Engine.consolidator] Merging into 1685607829
+[2023-06-01 08:24:01,697 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-01 08:24:01,774 DEBUG Engine.consolidator] Processed datapoint: 1685607829/ConsolidatingAggregator@139970655432656
+[2023-06-01 08:24:01,774 INFO Engine.final-stats] Test duration: 0:01:25
+[2023-06-01 08:24:01,775 INFO Engine.final-stats] Samples count: 59080, 0.01% failures
+[2023-06-01 08:24:01,775 INFO Engine.final-stats] Average times: total 0.067, latency 0.064, connect 0.010
+[2023-06-01 08:24:01,788 INFO Engine.final-stats] Percentiles:
++---------------+---------------+
+| Percentile, % | Resp. Time, s |
++---------------+---------------+
+|           0.0 |           0.0 |
+|          50.0 |         0.075 |
+|          90.0 |         0.105 |
+|          95.0 |         0.109 |
+|          99.0 |         0.127 |
+|          99.9 |         2.686 |
+|         100.0 |        30.016 |
++---------------+---------------+
+[2023-06-01 08:24:01,789 INFO Engine.final-stats] Request label stats:
++---------------------------------------------------------+--------+---------+--------+---------------------------------------------------------------------------------------------+
+| label                                                   | status |    succ | avg_rt | error                                                                                       |
++---------------------------------------------------------+--------+---------+--------+---------------------------------------------------------------------------------------------+
+| http://127.0.0.1:8080                                   |  FAIL  |  99.99% |  0.069 | Non HTTP response message: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: connect timed out |
+| http://127.0.0.1:8080/performance.yml                   |  FAIL  |  99.97% |  0.074 | Non HTTP response message: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: connect timed out |
+| http://127.0.0.1:8080/readme.md                         |  FAIL  | 100.00% |  0.065 | Non HTTP response message: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: connect timed out |
+| http://127.0.0.1:8080/src/main/java/liteweb/Server.java |   OK   | 100.00% |  0.061 |                                                                                             |
++---------------------------------------------------------+--------+---------+--------+---------------------------------------------------------------------------------------------+
+[2023-06-01 08:24:01,789 DEBUG Engine.console] No logger_handler or orig_stream was detected
+[2023-06-01 08:24:01,789 INFO Engine.final-stats] Test duration: 0:01:25
+[2023-06-01 08:24:01,789 INFO Engine.final-stats] Samples count: 59080, 0.01% failures
+[2023-06-01 08:24:01,789 INFO Engine.final-stats] Average times: total 0.067, latency 0.064, connect 0.010
+[2023-06-01 08:24:01,790 INFO Engine.final-stats] Percentiles:
++---------------+---------------+
+| Percentile, % | Resp. Time, s |
++---------------+---------------+
+|           0.0 |           0.0 |
+|          50.0 |         0.075 |
+|          90.0 |         0.105 |
+|          95.0 |         0.109 |
+|          99.0 |         0.127 |
+|          99.9 |         2.686 |
+|         100.0 |        30.016 |
++---------------+---------------+
+[2023-06-01 08:24:01,791 INFO Engine.final-stats] Request label stats:
++---------------------------------------------------------+--------+---------+--------+---------------------------------------------------------------------------------------------+
+| label                                                   | status |    succ | avg_rt | error                                                                                       |
++---------------------------------------------------------+--------+---------+--------+---------------------------------------------------------------------------------------------+
+| http://127.0.0.1:8080                                   |  FAIL  |  99.99% |  0.069 | Non HTTP response message: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: connect timed out |
+| http://127.0.0.1:8080/performance.yml                   |  FAIL  |  99.97% |  0.074 | Non HTTP response message: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: connect timed out |
+| http://127.0.0.1:8080/readme.md                         |  FAIL  | 100.00% |  0.065 | Non HTTP response message: Connect to 127.0.0.1:8080 [/127.0.0.1] failed: connect timed out |
+| http://127.0.0.1:8080/src/main/java/liteweb/Server.java |   OK   | 100.00% |  0.061 |                                                                                             |
++---------------------------------------------------------+--------+---------+--------+---------------------------------------------------------------------------------------------+
+[2023-06-01 08:24:01,792 DEBUG Engine.Configuration] Dumping YAML config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.yml
+[2023-06-01 08:24:01,818 DEBUG Engine.Configuration] Dumping JSON config into /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/effective.json
+[2023-06-01 08:24:01,820 INFO root] Artifacts dir: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186
+[2023-06-01 08:24:01,820 INFO root] Done performing with code: 0
+[2023-06-01 08:24:01,820 DEBUG root] Closing log handler: /home/vagrant/daniel/simple-web-server/2023-06-01_08-22-28.684186/bzt.log

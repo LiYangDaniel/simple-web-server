@@ -12,12 +12,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
 
     private static final Logger log = LogManager.getLogger(Server.class);
     private static final int DEFAULT_PORT = 8080;
+    private static final int BACKLOG_LENGTH = 200;
+    private Executor executor = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -27,12 +31,15 @@ public class Server {
 
     public void startListen(int port) throws IOException, InterruptedException {
 
-        try (ServerSocket socket = new ServerSocket(port)) {
+        try (ServerSocket socket = new ServerSocket(port, BACKLOG_LENGTH)) {
             log.info("Web server listening on port %d (press CTRL-C to quit)", port);
-            while (true) {
-                TimeUnit.MILLISECONDS.sleep(1);
-                handle(socket);
-            }
+            
+                while (true) {
+                    TimeUnit.MILLISECONDS.sleep(1);
+                    executor.execute(() -> {
+                        handle(socket);
+                    });
+                }
         }
     }
 

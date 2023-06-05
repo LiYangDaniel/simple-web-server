@@ -27,3 +27,6 @@ java -cp build/libs/simple-web-server-1.0.jar liteweb.Server
 bzt performance.yml
 ```
 
+## Performance test result
+![img.png](img.png)
+
