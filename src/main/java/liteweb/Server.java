@@ -24,7 +24,7 @@ public class Server {
     private static final int BACKLOG_LENGTH = 10000;
     private ExecutorService executor = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors(), 20, 120, TimeUnit.SECONDS, new ArrayBlockingQueue<>(BACKLOG_LENGTH));
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
 
         new Server().startListen(getValidPortParam(args));
     }
@@ -34,28 +34,33 @@ public class Server {
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             log.info("Web server listening on port {} (press CTRL-C to quit)", port);
-            Socket socket = null;
+            Socket socket;
             while (true) {
                 socket = serverSocket.accept();
-                Socket finalSocket = socket;
+                Socket clientSocket = socket;
                 executor.execute(() -> {
-                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(finalSocket.getInputStream()))
-                    ) {
-                        List<String> requestContent = new ArrayList<>();
-                        String temp = reader.readLine();
-                        while (temp != null && temp.length() > 0) {
-                            requestContent.add(temp);
-                            temp = reader.readLine();
-                        }
-                        Request req = new Request(requestContent);
-                        Response res = new Response(req);
-                        res.write(finalSocket.getOutputStream());
-                    } catch (IOException e) {
-                        log.error("IO Error", e);
-                    }
+                    handle(clientSocket);
                 });
             }
         }
+    }
+
+    private static void handle(Socket clientSocket) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))
+        ) {
+            List<String> requestContent = new ArrayList<>();
+            String temp = reader.readLine();
+            while (temp != null && temp.length() > 0) {
+                requestContent.add(temp);
+                temp = reader.readLine();
+            }
+            Request req = new Request(requestContent);
+            Response res = new Response(req);
+            res.write(clientSocket.getOutputStream());
+        } catch (IOException e) {
+            log.error("IO Error", e);
+        }
+
     }
 
     /**
