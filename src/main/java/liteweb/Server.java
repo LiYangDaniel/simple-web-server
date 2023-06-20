@@ -12,16 +12,17 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
 
     private static final Logger log = LogManager.getLogger(Server.class);
     private static final int DEFAULT_PORT = 8080;
-    private static final int BACKLOG_LENGTH = 200;
-    private Executor executor = Executors.newFixedThreadPool(10);
+    private static final int BACKLOG_LENGTH = 10000;
+    private ExecutorService executor = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors(), 20, 120, TimeUnit.SECONDS, new ArrayBlockingQueue<>(BACKLOG_LENGTH));
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -29,37 +30,32 @@ public class Server {
     }
 
 
-    public void startListen(int port) throws IOException, InterruptedException {
+    public void startListen(int port) throws IOException {
 
-        try (ServerSocket socket = new ServerSocket(port, BACKLOG_LENGTH)) {
-            log.info("Web server listening on port %d (press CTRL-C to quit)", port);
-            
-                while (true) {
-                    TimeUnit.MILLISECONDS.sleep(1);
-                    executor.execute(() -> {
-                        handle(socket);
-                    });
-                }
-        }
-    }
-
-    private static void handle(ServerSocket socket) {
-        try (Socket clientSocket = socket.accept();
-             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))
-        ) {
-            List<String> requestContent = new ArrayList<>();
-            String temp = reader.readLine();
-            while(temp != null && temp.length() > 0) {
-                requestContent.add(temp);
-                temp = reader.readLine();
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            log.info("Web server listening on port {} (press CTRL-C to quit)", port);
+            Socket socket = null;
+            while (true) {
+                socket = serverSocket.accept();
+                Socket finalSocket = socket;
+                executor.execute(() -> {
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(finalSocket.getInputStream()))
+                    ) {
+                        List<String> requestContent = new ArrayList<>();
+                        String temp = reader.readLine();
+                        while (temp != null && temp.length() > 0) {
+                            requestContent.add(temp);
+                            temp = reader.readLine();
+                        }
+                        Request req = new Request(requestContent);
+                        Response res = new Response(req);
+                        res.write(finalSocket.getOutputStream());
+                    } catch (IOException e) {
+                        log.error("IO Error", e);
+                    }
+                });
             }
-            Request req = new Request(requestContent);
-            Response res = new Response(req);
-            res.write(clientSocket.getOutputStream());
-        } catch (IOException e) {
-            log.error("IO Error", e);
         }
-
     }
 
     /**

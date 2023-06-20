@@ -1,5 +1,5 @@
 execution:
-  - concurrency: 60
+  - concurrency: 5
     hold-for: 1m
     ramp-up: 10s
     scenario: simple-web-server
@@ -10,9 +10,7 @@ scenarios:
     requests:
       - http://127.0.0.1:8080
       - http://127.0.0.1:8080/readme.md
-      - http://127.0.0.1:8080/src/main/java/liteweb/Server.java
-      - http://127.0.0.1:8080/readme.md
-      - http://127.0.0.1:8080/performance.yml
+      - http://127.0.0.1:8080/test.zip
 
 reporting:
   - module: final-stats

@@ -3,7 +3,15 @@ package liteweb.http;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +24,8 @@ public class Response {
     private final List<String> headers = new ArrayList<>();
 
     private byte[] body;
+
+    private BufferedReader bufferedReader;
 
     public List<String> getHeaders() {
         return new ArrayList<>(headers);
@@ -37,7 +47,7 @@ public class Response {
                     } else if (file.exists()) {
                         fillHeaders(Status._200);
                         setContentType(uri);
-                        fillResponse(getBytes(file));
+                        bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
                     } else {
                         log.info("File not found: %s", req.getUri());
                         fillHeaders(Status._404);
@@ -75,19 +85,6 @@ public class Response {
         fillResponse(result.toString());
     }
 
-    private byte[] getBytes(File file) throws IOException {
-        int length = (int) file.length();
-        byte[] array = new byte[length];
-        try (InputStream in = new FileInputStream(file)) {
-            int offset = 0;
-            while (offset < length) {
-                int count = in.read(array, offset, (length - offset));
-                offset += count;
-            }
-        }
-        return array;
-    }
-
     private void fillHeaders(Status status) {
         headers.add(Response.VERSION + " " + status.toString());
         headers.add("Connection: close");
@@ -98,22 +95,25 @@ public class Response {
         body = response.getBytes();
     }
 
-    private void fillResponse(byte[] response) {
-        body = response;
-    }
-
     public void write(OutputStream outputStream) throws IOException {
         try (DataOutputStream output = new DataOutputStream(outputStream)) {
-			for (String header : headers) {
-				output.writeBytes(header + "\r\n");
-			}
-			output.writeBytes("\r\n");
-			if (body != null) {
-				output.write(body);
-			}
-			output.writeBytes("\r\n");
-			output.flush();
-		}
+            for (String header : headers) {
+                output.writeBytes(header + "\r\n");
+            }
+            output.writeBytes("\r\n");
+            if (body != null) {
+                output.write(body);
+            } else if (bufferedReader != null) {
+                try (BufferedWriter bufferedWriter = new BufferedWriter(new BufferedWriter(new OutputStreamWriter(output)))) {
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        bufferedWriter.write(line);
+                    }
+                }
+            }
+            output.writeBytes("\r\n");
+            output.flush();
+        }
     }
 
     private void setContentType(String uri) {
