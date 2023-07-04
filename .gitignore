@@ -1,6 +1,7 @@
 .idea
 .gradle
 bin
+*.log
 out
 .DS_Store
 **/build/

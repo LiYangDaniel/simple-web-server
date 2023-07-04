@@ -36,7 +36,7 @@ public class Request {
     }
 
     public Request(List<String> requests) {
-        parseRequestLine(requests.get(0));
+        parseRequestLine(requests.size() != 0 ? requests.get(0) : "");
         for (int i = 1; i < requests.size(); i++) {
             addToHeader(requests.get(i));
         }

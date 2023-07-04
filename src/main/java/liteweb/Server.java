@@ -1,5 +1,6 @@
 package liteweb;
 
+import liteweb.cache.LRUCache;
 import liteweb.http.Request;
 import liteweb.http.Response;
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +24,8 @@ public class Server {
     private static final int BACKLOG_LENGTH = 200;
     private Executor executor = Executors.newFixedThreadPool(10);
 
+    private static final LRUCache<String, Response> cache = new LRUCache<>(4);
+    
     public static void main(String[] args) throws IOException, InterruptedException {
 
         new Server().startListen(getValidPortParam(args));
@@ -54,9 +57,16 @@ public class Server {
                 temp = reader.readLine();
             }
             Request req = new Request(requestContent);
-            Response res = new Response(req);
-            res.write(clientSocket.getOutputStream());
-        } catch (IOException e) {
+            String uri = req.getUri();
+            Response res = cache.get(uri);
+            if (res != null) {
+                res.write(clientSocket.getOutputStream());
+            } else {
+                res = new Response(req);
+                cache.put(uri, res);
+                res.write(clientSocket.getOutputStream());
+            }
+        } catch (IOException | InterruptedException e) {
             log.error("IO Error", e);
         }
 
