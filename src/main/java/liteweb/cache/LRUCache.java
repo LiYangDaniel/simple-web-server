@@ -12,31 +12,32 @@ public class LRUCache<K, V> {
     private final int capacity;
     private final LinkedHashMap<K, V> cache;
     private final Lock lock;
-    private final Condition notFull;
-    private final Condition notEmpty;
+    private final Condition write;
+    private volatile boolean isWriting = false;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        this.cache = new LinkedHashMap<K, V>(capacity, 0.75f, true) {
+        this.cache = new LinkedHashMap<K, V>(this.capacity, 0.75f, true) {
             @Override
             protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
                 return size() > capacity;
             }
         };
         this.lock = new ReentrantLock();
-        this.notFull = lock.newCondition();
-        this.notEmpty = lock.newCondition();
+        this.write = lock.newCondition();
     }
 
     public void put(K key, V value) throws InterruptedException {
         lock.lock();
         try {
-            while (cache.size() > capacity) {
-                notFull.await();
+            while (isWriting) {
+                write.await();
             }
+            isWriting = true;
             cache.put(key, value);
-            notEmpty.signal();
+            isWriting = false;
         } finally {
+            write.signalAll();
             lock.unlock();
         }
     }
@@ -44,10 +45,9 @@ public class LRUCache<K, V> {
     public V get(K key) throws InterruptedException {
         lock.lock();
         try {
-            while (cache.isEmpty()) {
-                return null;
+            while (isWriting) {
+                write.await();
             }
-            notFull.signal();
             return cache.get(key);
         } finally {
             lock.unlock();
