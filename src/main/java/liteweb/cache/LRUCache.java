@@ -1,5 +1,6 @@
 package liteweb.cache;
 
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Condition;
@@ -11,8 +12,8 @@ public class LRUCache<K, V> {
     private final int capacity;
     private final LinkedHashMap<K, V> cache;
     private final Lock lock;
-    private final Condition write;
-    private final Condition read;
+    private final Condition notFull;
+    private final Condition notEmpty;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
@@ -23,18 +24,18 @@ public class LRUCache<K, V> {
             }
         };
         this.lock = new ReentrantLock();
-        this.write = lock.newCondition();
-        this.read = lock.newCondition();
+        this.notFull = lock.newCondition();
+        this.notEmpty = lock.newCondition();
     }
 
     public void put(K key, V value) throws InterruptedException {
         lock.lock();
         try {
             while (cache.size() > capacity) {
-                write.await();
+                notFull.await();
             }
             cache.put(key, value);
-            read.signal();
+            notEmpty.signal();
         } finally {
             lock.unlock();
         }
@@ -43,6 +44,10 @@ public class LRUCache<K, V> {
     public V get(K key) throws InterruptedException {
         lock.lock();
         try {
+            while (cache.isEmpty()) {
+                return null;
+            }
+            notFull.signal();
             return cache.get(key);
         } finally {
             lock.unlock();

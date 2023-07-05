@@ -1,9 +1,15 @@
 package liteweb.http;
 
+import liteweb.cache.LRUCache;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +23,8 @@ public class Response {
 
     private byte[] body;
 
+    private static final LRUCache<String, byte[]> cache = new LRUCache<>(3);
+    
     public List<String> getHeaders() {
         return new ArrayList<>(headers);
     }
@@ -37,13 +45,13 @@ public class Response {
                     } else if (file.exists()) {
                         fillHeaders(Status._200);
                         setContentType(uri);
-                        fillResponse(getBytes(file));
+                        fillResponse(getBytes(uri, file));
                     } else {
                         log.info("File not found: %s", req.getUri());
                         fillHeaders(Status._404);
                         fillResponse(Status._404.toString());
                     }
-                } catch (IOException e) {
+                } catch (IOException | InterruptedException e) {
                     log.error("Response Error", e);
                     fillHeaders(Status._400);
                     fillResponse(Status._400.toString());
@@ -75,17 +83,21 @@ public class Response {
         fillResponse(result.toString());
     }
 
-    private byte[] getBytes(File file) throws IOException {
-        int length = (int) file.length();
-        byte[] array = new byte[length];
-        try (InputStream in = new FileInputStream(file)) {
-            int offset = 0;
-            while (offset < length) {
-                int count = in.read(array, offset, (length - offset));
-                offset += count;
+    private byte[] getBytes(String uri, File file) throws IOException, InterruptedException {
+        byte[] fileBytes = cache.get(uri);
+        if (fileBytes == null) {
+            int length = (int) file.length();
+            fileBytes = new byte[length];
+            try (InputStream in = new FileInputStream(file)) {
+                int offset = 0;
+                while (offset < length) {
+                    int count = in.read(fileBytes, offset, (length - offset));
+                    offset += count;
+                }
             }
+            cache.put(uri, fileBytes);
         }
-        return array;
+        return fileBytes;
     }
 
     private void fillHeaders(Status status) {

@@ -28,5 +28,5 @@ bzt performance.yml
 ```
 
 ## Performance test result
-![img.png](img.png)
+![img_1.png](img_1.png)
 

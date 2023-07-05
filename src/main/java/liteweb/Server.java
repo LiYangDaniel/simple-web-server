@@ -57,16 +57,9 @@ public class Server {
                 temp = reader.readLine();
             }
             Request req = new Request(requestContent);
-            String uri = req.getUri();
-            Response res = cache.get(uri);
-            if (res != null) {
-                res.write(clientSocket.getOutputStream());
-            } else {
-                res = new Response(req);
-                cache.put(uri, res);
-                res.write(clientSocket.getOutputStream());
-            }
-        } catch (IOException | InterruptedException e) {
+            Response res = new Response(req);
+            res.write(clientSocket.getOutputStream());
+        } catch (IOException e) {
             log.error("IO Error", e);
         }
 
